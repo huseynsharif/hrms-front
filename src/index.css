@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.jobAdvertisements{
+  
+  margin: 80px;
+}
+
+/* .employeeCv{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

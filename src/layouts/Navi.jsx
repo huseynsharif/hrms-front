@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Dropdown, Menu } from 'semantic-ui-react'
 
 
@@ -7,23 +8,19 @@ export default function Navi() {
         <div>
 
             <Menu size='large'>
-                <Menu.Item
+                <Link to="/"><Menu.Item
                     name='home'
 
-                />
-                <Menu.Item
-                    name='messages'
+                /></Link>
+                <Link to="/jobadvertisements"><Menu.Item
+                    name='Job Advertisement'
 
-                />
-                <Menu.Item
-                    name='Job Advirtisement'
-
-                />  
-                <Menu.Item
+                /></Link>
+                <Link to="/employeecvs"><Menu.Item
                     name='Employe CV'
 
-                />  
-                
+                />  </Link>
+
                 <Menu.Menu position='right'>
                     <Dropdown item text='Language'>
                         <Dropdown.Menu>
@@ -34,7 +31,12 @@ export default function Navi() {
                     </Dropdown>
 
                     <Menu.Item>
+                        <Link to="/signup">
                         <Button primary>Sign Up</Button>
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Button>Log in</Button>
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>

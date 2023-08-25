@@ -17,8 +17,8 @@ export default function SignUpHandler() {
 
     return (
         <div>
-            <Container style={{ display: "flex", justifyContent: "center" }}>
-            <Menu tabular>
+            <Container style={{ display: "flex", justifyContent: "center", marginTop:"20px"}}>
+            <Menu tabular >
                 <Menu.Item
                     name='Employee' active={whichPage==="employee"} onClick={()=>setWhichPage("employee")}
                 />

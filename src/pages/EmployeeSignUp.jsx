@@ -1,16 +1,24 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Container, Form } from 'semantic-ui-react'
+import { EmployeeService } from '../services/EmployeeService'
 
 export default function EmployeeSignUp() {
 
+    useEffect(
+
+        () => {
+            
+        }, []
+
+    )
     const formik = useFormik(
         {
             initialValues: {
                 name: "",
-                surName: "",
-                birthYear: "",
+                surname: "",
+                birthyear: "",
                 identityNumber: "",
                 email: "",
                 password: "",
@@ -18,15 +26,16 @@ export default function EmployeeSignUp() {
             },
             validationSchema: Yup.object({
                 name: Yup.string().max(15, "Must be 15 character or less.").required("Required"),
-                surName: Yup.string().max(15, "Must be 25 character or less.").required("Required"),
-                birthYear: Yup.string().required("Required"),
+                surname: Yup.string().max(15, "Must be 25 character or less.").required("Required"),
+                birthyear: Yup.string().required("Required"),
                 identityNumber: Yup.string().required("Required"),
                 email: Yup.string().email("Invalid email adress.").required("Required"),
                 password: Yup.string().required("Required"),
                 cpassword: Yup.string().required("Required")
             }),
         onSubmit: (values) => {
-            console.log(values);
+            let employeeService = new EmployeeService();
+            employeeService.add(values);
         }
         }
     )
@@ -48,28 +57,28 @@ return (
                     {formik.touched.name && formik.errors.name ? <p>{formik.errors.name}</p> : null} 
                 </Form.Field>
                 <Form.Field>
-                    <label>Surname</label>
+                    <label>surname</label>
                     <input
-                        id='surName'
-                        placeholder='Surname'
+                        id='surname'
+                        placeholder='surname'
                         onChange={formik.handleChange}
-                        value={formik.values.surName}
+                        value={formik.values.surname}
                         onBlur={formik.handleBlur}
 
                     />
-                    {formik.touched.surName && formik.errors.surName ? <p>{formik.errors.surName}</p> : null} 
+                    {formik.touched.surname && formik.errors.surname ? <p>{formik.errors.surname}</p> : null} 
                 </Form.Field>
                 <Form.Field>
                     <label>Birth of year</label>
                     <input
-                        id='birthYear'
+                        id='birthyear'
                         placeholder='birth of year'
                         onChange={formik.handleChange}
-                        value={formik.values.birthYear}
+                        value={formik.values.birthyear}
                         onBlur={formik.handleBlur}
 
                     />
-                    {formik.touched.birthYear && formik.errors.birthYear ? <p>{formik.errors.birthYear}</p> : null} 
+                    {formik.touched.birthyear && formik.errors.birthyear ? <p>{formik.errors.birthyear}</p> : null} 
                 </Form.Field>
                 <Form.Field>
                     <label>Identitiy number</label>
@@ -122,7 +131,7 @@ return (
                     />
                     {formik.touched.cpassword && formik.errors.cpassword ? <p>{formik.errors.cpassword}</p> : null} 
                 </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit' primary>Submit</Button>
             </Form>
 
         </Container>

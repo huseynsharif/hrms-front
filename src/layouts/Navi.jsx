@@ -36,7 +36,10 @@ export default function Navi() {
                         </Link>
                     </Menu.Item>
                     <Menu.Item>
+                    <Link to="/login">
                         <Button>Log in</Button>
+                        </Link>
+
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>

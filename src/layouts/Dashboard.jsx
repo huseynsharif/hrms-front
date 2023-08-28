@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import EmployeeSignUp from '../pages/EmployeeSignUp'
 import SignUpHandler from '../pages/SignUpHandler'
+import LogIn from '../pages/LogIn'
 
 
 export default function Dashboard() {
@@ -18,6 +19,8 @@ export default function Dashboard() {
         <Route path="/jobadvertisements" Component={JobAdvertisements} />
         <Route path="/employeecvs" Component={EmployeeCVs} />
         <Route path="/signup" Component={SignUpHandler} />
+        <Route path="/login" Component={LogIn} />
+        
       </Routes>
     </div>
   )

@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Container, Form } from 'semantic-ui-react'
 import { EmployerService } from '../services/EmployerService'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 export default function EmployerSignUp() {
     const navigate = useNavigate();
-    let result;
+    useEffect(
+
+        () => {
+            
+        }, []
+
+    )
     const formik = useFormik(
         {
             initialValues: {
@@ -30,10 +36,12 @@ export default function EmployerSignUp() {
                 cpassword: Yup.string().required("Required")
             }),
             onSubmit: (values) => {
-                console.log(values);
+                console.log("salam");
                 let employerService = new EmployerService();
-                result = employerService.add(values);
-                result.success ? navigate("/login") : navigate("signup")
+                employerService.add(values);
+                navigate("/login")
+                console.log(values);
+
             }
         }
     )
@@ -48,7 +56,7 @@ export default function EmployerSignUp() {
                             placeholder='Company name'
                             type='text'
                             onChange={formik.handleChange}
-                            value={formik.values.name}
+                            value={formik.values.companyName}
                             onBlur={formik.handleBlur}
 
                         />
@@ -60,7 +68,7 @@ export default function EmployerSignUp() {
                             id='website'
                             placeholder='Website'
                             onChange={formik.handleChange}
-                            value={formik.values.surName}
+                            value={formik.values.website}
                             onBlur={formik.handleBlur}
 
                         />
@@ -72,7 +80,7 @@ export default function EmployerSignUp() {
                             id='phoneNumber'
                             placeholder='Phone Number'
                             onChange={formik.handleChange}
-                            value={formik.values.birthYear}
+                            value={formik.values.phoneNumber}
                             onBlur={formik.handleBlur}
 
                         />
@@ -118,7 +126,6 @@ export default function EmployerSignUp() {
                         {formik.touched.cpassword && formik.errors.cpassword ? <p>{formik.errors.cpassword}</p> : null}
                     </Form.Field>
                     <Button type='submit' primary>Submit</Button>
-                    {!result.success ? <p>{result.message}</p> : null}
                 </Form>
 
             </Container>

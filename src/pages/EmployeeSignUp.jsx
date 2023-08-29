@@ -3,8 +3,11 @@ import * as Yup from 'yup'
 import React, { useEffect } from 'react'
 import { Button, Container, Form } from 'semantic-ui-react'
 import { EmployeeService } from '../services/EmployeeService'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function EmployeeSignUp() {
+    const navigate = useNavigate();
 
     useEffect(
 
@@ -36,6 +39,8 @@ export default function EmployeeSignUp() {
         onSubmit: (values) => {
             let employeeService = new EmployeeService();
             employeeService.add(values);
+            navigate("/login")
+            console.log(values);
         }
         }
     )

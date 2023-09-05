@@ -41,6 +41,7 @@ export default function EmployeeSignUp() {
                 employeeService.add(values);
                 navigate("/login")
                 console.log(values);
+                console.log("Salam")
             }
         }
     )

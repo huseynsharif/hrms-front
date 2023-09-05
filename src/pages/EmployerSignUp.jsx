@@ -30,7 +30,6 @@ export default function EmployerSignUp() {
                 companyName: Yup.string().max(15, "Must be 15 character or less.").required("Required"),
                 website: Yup.string().max(15, "Must be 25 character or less.").required("Required"),
                 phoneNumber: Yup.string().required("Required"),
-                identityNumber: Yup.string().required("Required"),
                 email: Yup.string().email("Invalid email adress.").required("Required"),
                 password: Yup.string().required("Required"),
                 cpassword: Yup.string().required("Required")
@@ -42,7 +41,7 @@ export default function EmployerSignUp() {
                 navigate("/login")
                 console.log(values);
 
-            }
+            },
         }
     )
     return (
